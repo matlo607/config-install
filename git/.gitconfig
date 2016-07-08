@@ -1,0 +1,37 @@
+[user]
+    name = John Doe
+    email = john.doe@gmail.com
+
+[color]
+    ui = auto
+    branch = true
+    diff = true
+    interactive = true
+    grep = true
+    pager = true
+    status = true
+
+[i18n]
+    commitencoding = utf-8
+
+[core]
+    autocrlf = false
+    editor = vim
+    pager = less
+    excludesfile = ~/.gitignore
+    attributesfile = ~/.gitattributes
+
+[difftool "kdiff3"]
+    cmd = kdiff3 "$LOCAL" "$BASE"
+
+#[merge]
+#    tool = kdiff3
+
+[mergetool "kdiff3"]
+    cmd = kdiff3
+
+[grep]
+    linenumber = true
+
+[push]
+    default = simple
