@@ -119,3 +119,6 @@ fi
 #remove annoying variable
 unset SSH_ASKPASS
 
+if [[ "$(uname)" = "SunOS" ]]; then
+    bind -x $'"\C-l":clear;'
+fi
