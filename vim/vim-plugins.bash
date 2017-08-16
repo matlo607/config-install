@@ -14,7 +14,7 @@ __base="$(basename ${__file} .bash)"
 #__root="$(cd "$(dirname "${__dir}")" && pwd)"
 verbose=0
 
-prefix="~/.vim"
+prefix="${HOME}/.vim"
 
 repositories=( "https://github.com/tpope/vim-pathogen.git"
                "https://github.com/scrooloose/nerdtree.git"
