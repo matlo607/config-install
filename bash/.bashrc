@@ -13,6 +13,8 @@ esac
 echo "load .bashrc"
 
 if [[ "$(uname)" = "SunOS" ]]; then
+    export PAGER="less"
+
     if [[ -e "/opt/csw/bin/bash" ]]; then
         export SHELL="/opt/csw/bin/bash"
     fi
