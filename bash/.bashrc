@@ -12,6 +12,20 @@ esac
 
 echo "load .bashrc"
 
+function path_append()
+{
+    if [ -d "${1}" ] && [[ ":${PATH}:" != *":${1}:"* ]]; then
+        PATH="${PATH:+"${PATH}:"}${1}"
+    fi
+}
+
+function path_prepend()
+{
+    if [ -d "${1}" ] && [[ ":${PATH}:" != *":${1}:"* ]]; then
+        PATH="${PATH:+"${1}:${PATH}"}"
+    fi
+}
+
 if [[ "$(uname)" = "SunOS" ]]; then
     export PAGER="less"
 
@@ -37,8 +51,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=10000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -123,4 +137,8 @@ unset SSH_ASKPASS
 
 if [[ "$(uname)" = "SunOS" ]]; then
     bind -x $'"\C-l":clear;'
+fi
+
+if [ -f "${HOME}/.bash_user" ]; then
+    . ~/.bash_user
 fi
