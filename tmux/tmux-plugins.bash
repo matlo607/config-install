@@ -14,7 +14,7 @@ __base="$(basename ${__file} .bash)"
 #__root="$(cd "$(dirname "${__dir}")" && pwd)"
 verbose=0
 
-prefix="~/.tmux"
+prefix="${HOME}/.tmux"
 
 repositories=("https://github.com/tmux-plugins/tpm.git"
               "https://github.com/tmux-plugins/tmux-resurrect.git")
