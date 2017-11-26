@@ -2,9 +2,8 @@
 
 echo "load .bash_profile"
 
-TERM="xterm-256color"
-export TERM
+#export TERM="xterm-256color"
 
-if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
+if [ -f "${HOME}/.bashrc" ]; then
+    . "${HOME}/.bashrc"
 fi
