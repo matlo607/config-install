@@ -5,11 +5,11 @@ exec tail -n +3 $0
 # the 'exec tail' line above.
 
 menuentry "System shutdown" {
-	echo "System shutting down..."
-	halt
+    echo "System shutting down..."
+    halt
 }
 
 menuentry "System restart" {
-	echo "System rebooting..."
-	reboot
+    echo "System rebooting..."
+    reboot
 }
