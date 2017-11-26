@@ -131,10 +131,10 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = '-std=c++14 -Wall -Wextra'
 
-let g:clang_format_path = '/opt/LLVM/bin/clang-format'
-let g:clang_format_fallback_style = 'Google'
-map <C-I> ggVG :py3f /opt/LLVM/share/clang/clang-format.py<cr>
-imap <C-I> <c-o>:py3f /opt/LLVM/share/clang/clang-format.py<cr>
+"let g:clang_format_path = 'clang-format'
+"let g:clang_format_fallback_style = 'Google'
+"map <C-I> ggVG :py3f /opt/LLVM/share/clang/clang-format.py<cr>
+"imap <C-I> <c-o>:py3f /opt/LLVM/share/clang/clang-format.py<cr>
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
