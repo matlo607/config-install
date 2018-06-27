@@ -1,0 +1,11 @@
+---
+
+- name : "Install Hyper-V guest packages"
+  apt:
+     name: "{{ item }}"
+     state: latest
+     update_cache: yes
+  with_items:
+     - linux-tools-virtual
+     - linux-cloud-tools-virtual
+     - cifs-utils

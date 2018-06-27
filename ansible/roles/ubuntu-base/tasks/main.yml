@@ -1,0 +1,25 @@
+---
+
+- name: "Update apt cache"
+  apt:
+     update_cache: yes
+
+- name: "Install VIM"
+  apt:
+     name: vim
+     state: latest
+
+- name: "Install python3, pip3 and some modules"
+  apt:
+     name: python3-pip
+     state: latest
+
+- name: "Usefull tools"
+  apt:
+     name: "{{ item }}"
+     state: latest
+  with_items:
+     - wget
+     - curl
+     - tree
+

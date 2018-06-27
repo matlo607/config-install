@@ -1,0 +1,11 @@
+---
+
+- name: install Xubuntu 18.04's environment
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+  vars:
+    python_version: "3.6"
+  roles:
+    - { role: hyper-v }
+    - { role: ubuntu-base }
