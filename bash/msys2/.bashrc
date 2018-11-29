@@ -29,8 +29,8 @@ function path_prepend()
 }
 
 # Python 3
-#path_append "c:\Program Files\Python36"
-#path_append "c:\Program Files\Python36\Scripts"
+#path_append "c:\Program Files\Python37"
+#path_append "c:\Program Files\Python37\Scripts"
 
 # LLVM
 #path_append "c:\Program Files\LLVM\bin"
