@@ -5,7 +5,7 @@ test -f ~/.bash_aliases && . ~/.bash_aliases
 function __normalize_path()
 {
     p="${1}"
-    if [[("$(uname -s)" =~ MINGW64_NT* || "$(uname -s)" =~ MINGW32_NT*)]]; then
+    if [[("$(uname -s)" =~ MINGW64_NT* || "$(uname -s)" =~ MINGW32_NT* || "$(uname -s)" =~ MSYS_NT*)]]; then
         p="$(cygpath --dos "${p}")"
         p="$(cygpath --unix "${p}")"
     fi
