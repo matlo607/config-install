@@ -142,3 +142,7 @@ fi
 if [ -f "${HOME}/.bash_user" ]; then
     . ~/.bash_user
 fi
+
+# launch ssh-agent
+eval $(ssh-agent -s)
+ssh-add ${HOME}/.ssh/*_rsa

@@ -28,10 +28,6 @@ function path_prepend()
     fi
 }
 
-# Python 3
-#path_append "c:\Program Files\Python37"
-#path_append "c:\Program Files\Python37\Scripts"
-
 # LLVM
 #path_append "c:\Program Files\LLVM\bin"
 
@@ -46,6 +42,9 @@ path_append "c:\Windows\System32\WindowsPowerShell\v1.0"
 # Chocolatey
 path_append "c:\ProgramData\chocolatey\bin"
 
+# Sublime 3
+path_append "c:\Program Files\Sublime Text 3"
+
 # Perforce
 #path_append "c:\Program Files\Perforce"
 
@@ -58,7 +57,8 @@ path_append "c:\ProgramData\chocolatey\bin"
 # Notepad++
 path_append "c:\Program Files\Notepad++"
 
-# Java
-#path_append "c:\jdk1.8.0_141-x64\bin"
-
 export PATH
+
+# launch ssh-agent
+eval $(ssh-agent -s)
+ssh-add ${HOME}/.ssh/*_rsa
