@@ -2,6 +2,20 @@
 
 echo "load .bash_aliases"
 
+if [[ "$(uname)" = "Darwin" ]] ; then
+    if [ -x "$(which gdircolors)" ]; then
+        PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+    else
+        echo "Please install coreutils pakcage:  brew install coreutils"
+    fi
+    if [ -x "$(which gsed)" ]; then
+        PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+    else
+        echo "Please install gnu-sed pakcage:  brew install gnu-sed"
+    fi
+    export PATH
+fi
+
 # enable color support of ls and also add handy aliases
 if [[ -x "$(which dircolors)" || -x "$(which gdircolors)" ]]; then
     if [[ "$(uname)" = "SunOS" && -x "$(which gdircolors)" ]]; then
