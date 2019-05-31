@@ -24,7 +24,8 @@ repositories=( "https://github.com/tpope/vim-pathogen.git"
                "https://github.com/sjl/gundo.vim.git"
                "https://github.com/elzr/vim-json.git"
                "https://github.com/vim-airline/vim-airline.git"
-               "https://github.com/vim-airline/vim-airline-themes.git")
+               "https://github.com/vim-airline/vim-airline-themes.git"
+               "https://github.com/suan/vim-instant-markdown.git")
 
 plugin_manager_dir="$( sed -r 's/.*\/(.*)\.git/\1/' <<< "${repositories[0]}" )"
 echo "plugin_manager_dir : ${plugin_manager_dir}"
