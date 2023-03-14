@@ -35,3 +35,6 @@
 
 [push]
     default = simple
+
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
