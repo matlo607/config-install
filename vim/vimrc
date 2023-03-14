@@ -131,8 +131,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = '-std=c++14 -Wall -Wextra'
 
-let g:syntastic_python_python_exec = 'python3'
-
 "let g:clang_format_path = 'clang-format'
 "let g:clang_format_fallback_style = 'Google'
 "map <C-I> ggVG :py3f /opt/LLVM/share/clang/clang-format.py<cr>
