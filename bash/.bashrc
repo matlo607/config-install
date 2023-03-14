@@ -26,18 +26,6 @@ function path_prepend()
     fi
 }
 
-if [[ "$(uname)" = "SunOS" ]]; then
-    export PAGER="less"
-
-    if [[ -e "/opt/csw/bin/bash" ]]; then
-        export SHELL="/opt/csw/bin/bash"
-    fi
-
-    if [[ -d "/opt/csw/bin" ]]; then
-        export PATH="/opt/csw/bin":${PATH}
-    fi
-fi
-
 # Source global definitions
 #if [ -f "/etc/bashrc" ]; then
 #    . "/etc/bashrc"
@@ -61,12 +49,6 @@ shopt -s checkwinsize
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
-
-#reload bash inputrc config files (usefull only on Solaris)
-if [ ! -e "/etc/inputrc" ] && [ -e "${HOME}/.inputrc" ]; then
-    echo "reload ~/.inputrc"
-    bind -f "~/.inputrc"
-fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -135,10 +117,6 @@ fi
 #remove annoying variable
 unset SSH_ASKPASS
 
-if [[ "$(uname)" = "SunOS" ]]; then
-    bind -x $'"\C-l":clear;'
-fi
-
 if [ -f "${HOME}/.bash_user" ]; then
     . ~/.bash_user
 fi
@@ -146,3 +124,7 @@ fi
 # launch ssh-agent
 eval $(ssh-agent -s)
 ssh-add ${HOME}/.ssh/*_rsa
+
+if [ -x "$(which brew)" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # switch system language to english
 export LANGUAGE="en_US.utf8"

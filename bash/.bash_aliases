@@ -3,64 +3,46 @@
 echo "load .bash_aliases"
 
 if [[ "$(uname)" = "Darwin" ]] ; then
-    if [ -x "$(which gdircolors)" ]; then
-        PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+    if [[ -x "$(which gdircolors)" ]]; then
+        alias dircolors='gdircolors'
+        export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:${PATH}"
+        export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:${MANPATH}"
     else
-        echo "Please install coreutils pakcage:  brew install coreutils"
+        echo "Please install coreutils package:  brew install coreutils"
     fi
-    if [ -x "$(which gsed)" ]; then
-        PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+    if [[ -x "$(which gfind)" ]]; then
+        export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:${PATH}"
+        export MANPATH="/opt/homebrew/opt/findutils/libexec/gnuman:${MANPATH}"
     else
-        echo "Please install gnu-sed pakcage:  brew install gnu-sed"
+        echo "Please install findutils package:  brew install findutils"
     fi
-    export PATH
+
+    if [[ -x "$(which gsed)" ]]; then
+        export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:${PATH}"
+        export MANPATH="/opt/homebrew/opt/gnu-sed/libexec/gnuman:${MANPATH}"
+    else
+        echo "Please install gnu-sed package:  brew install gnu-sed"
+    fi
+
+    if [ -f "/Applications/Firefox.app/Contents//MacOS/firefox" ]; then
+        alias firefox="/Applications/Firefox.app/Contents//MacOS/firefox --new-tab"
+    fi
+    if [ -f "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" ]; then
+        alias vscode="/Applications/Visual\\ Studio\\ Code.app/Contents/Resources/app/bin/code"
+    fi
 fi
 
 # enable color support of ls and also add handy aliases
 if [[ -x "$(which dircolors)" || -x "$(which gdircolors)" ]]; then
-    if [[ "$(uname)" = "SunOS" && -x "$(which gdircolors)" ]]; then
-        alias dircolors='gdircolors'
-    fi
     _color_flags="--color=auto"
 
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
-    if [[ "$(uname)" = "SunOS" ]] ; then
-        if [ -x "$(which gls)" ]; then
-            alias ls="gls ${_color_flags}"
-        fi
-        if [ -x "$(which ggrep)" ]; then
-            alias grep="ggrep ${_color_flags}"
-        fi
-        if [ -x "$(which gfgrep)" ]; then
-            alias fgrep="gfgrep ${_color_flags}"
-        fi
-        if [ -x "$(which gegrep)" ]; then
-            alias egrep="gegrep ${_color_flags}"
-        fi
-    else
-        alias ls="ls ${_color_flags}"
-        alias grep="grep ${_color_flags}"
-        alias fgrep="fgrep ${_color_flags}"
-        alias egrep="egrep ${_color_flags}"
-    fi
-fi
+    alias ls="ls ${_color_flags}"
+    alias grep="grep ${_color_flags}"
+    alias fgrep="fgrep ${_color_flags}"
+    alias egrep="egrep ${_color_flags}"
 
-if [[ "$(uname)" = "SunOS" ]] ; then
-    gnu_cmds=("awk" "diff" "echo" "make" "mv" "ranlib" "sed" "tar")
-    for cmd in ${gnu_cmds[@]}; do
-        if [ -x "$(which "g${cmd}")" ]; then
-            alias ${cmd}="g${cmd}"
-        fi
-    done
-
-    # some more ls aliases
-    if [ -x "$(which gls)" ]; then
-        alias ll="gls ${_color_flags} -alF"
-        alias la="gls ${_color_flags} -A"
-        alias l="gls ${_color_flags} -CF"
-    fi
-else
     # some more ls aliases
     alias ll="ls ${_color_flags} -alF"
     alias la="ls ${_color_flags} -A"
@@ -73,4 +55,3 @@ fi
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
