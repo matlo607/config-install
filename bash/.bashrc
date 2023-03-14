@@ -123,7 +123,11 @@ fi
 
 # launch ssh-agent
 eval $(ssh-agent -s)
-ssh-add ${HOME}/.ssh/*_rsa
+if [[ "$(uname)" = "Darwin" ]] ; then
+    ssh-add --apple-use-keychain ${HOME}/.ssh/*_ecdsa
+else
+    ssh-add ${HOME}/.ssh/*_ecdsa
+fi
 
 if [ -x "$(which brew)" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
