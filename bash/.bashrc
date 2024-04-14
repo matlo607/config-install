@@ -124,11 +124,20 @@ fi
 # launch ssh-agent
 eval $(ssh-agent -s)
 if [[ "$(uname)" = "Darwin" ]] ; then
-    ssh-add --apple-use-keychain ${HOME}/.ssh/*_ecdsa
+    ssh-add --apple-use-keychain
 else
-    ssh-add ${HOME}/.ssh/*_ecdsa
+    ssh-add
 fi
+ssh-add -L
 
+# Homebrew
+# https://docs.brew.sh/Homebrew-on-Linux#install
+if [[ "$(uname)" = "Darwin" ]] ; then
+  HOMEBREW_PREFIX="/opt/homebrew"
+else
+  HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+fi
+eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
 if [ -x "$(which brew)" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi

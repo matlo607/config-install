@@ -5,21 +5,21 @@ echo "load .bash_aliases"
 if [[ "$(uname)" = "Darwin" ]] ; then
     if [[ -x "$(which gdircolors)" ]]; then
         alias dircolors='gdircolors'
-        export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:${PATH}"
-        export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:${MANPATH}"
+        export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}"
+        export MANPATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnuman:${MANPATH}"
     else
         echo "Please install coreutils package:  brew install coreutils"
     fi
     if [[ -x "$(which gfind)" ]]; then
-        export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:${PATH}"
-        export MANPATH="/opt/homebrew/opt/findutils/libexec/gnuman:${MANPATH}"
+        export PATH="${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin:${PATH}"
+        export MANPATH="${HOMEBREW_PREFIX}/opt/findutils/libexec/gnuman:${MANPATH}"
     else
         echo "Please install findutils package:  brew install findutils"
     fi
 
     if [[ -x "$(which gsed)" ]]; then
-        export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:${PATH}"
-        export MANPATH="/opt/homebrew/opt/gnu-sed/libexec/gnuman:${MANPATH}"
+        export PATH="${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${PATH}"
+        export MANPATH="${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnuman:${MANPATH}"
     else
         echo "Please install gnu-sed package:  brew install gnu-sed"
     fi
