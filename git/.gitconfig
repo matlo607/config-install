@@ -21,14 +21,14 @@
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
 
-[difftool "kdiff3"]
-    cmd = kdiff3 "$LOCAL" "$BASE"
+#[difftool "kdiff3"]
+#    cmd = kdiff3 "$LOCAL" "$BASE"
 
 #[merge]
 #    tool = kdiff3
 
-[mergetool "kdiff3"]
-    cmd = kdiff3
+#[mergetool "kdiff3"]
+#    cmd = kdiff3
 
 [grep]
     linenumber = true
@@ -36,5 +36,8 @@
 [push]
     default = simple
 
+# Requires https://github.com/hickford/git-credential-oauth
+# Available via brew: brew install git-credential-oauth
 [credential]
-	helper = /usr/local/share/gcm-core/git-credential-manager
+    helper = cache --timeout 7200
+    helper = oauth -device
